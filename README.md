@@ -53,4 +53,4 @@
 To start the program import the `MainMenu()` function from the menu module:
 ### disclaimer!!
 
-in the menu module, MainMenu function ... you need to ensure the path matches your path. The path given here matches the data give
+In the menu module, MainMenu function ... you need to ensure the path matches your path. The path given here matches the data given
