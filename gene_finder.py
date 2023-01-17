@@ -70,28 +70,37 @@ def rest_of_ORF(dna):
     'ATGAGA'
     """
    
+    ## create an empty list
     Orf1 = []
+    ## divide the sequence into parts of 3 nucleotides each and store that in a list
     for i in range(0, len(dna), 3 ):
-        Orf1.append( dna[0+int(i):3+int(i)] )
+        Orf1.append( dna[0+int(i):3+int(i)] ) ## from postiion i to 3+i 
     #print("ORF IS ---->", Orf1, "\n")
+    
+    ## create an empty list 
     lis = []
-    stops = ['TAG', 'TAA', 'TGA']
+    stops = ['TAG', 'TAA', 'TGA']### a list of stop codons
     for i in stops:
-        if i in Orf1:
+        if i in Orf1:  ##Look for stop codons in the orf1 and print them out
             lis.append(i)
             #print("All stop codons in this orf ---->", lis, "\n")
-    indexs_stops = []
-    for i in lis:
-        indexs_stops.append(int(Orf1.index(i)))
-    sorted_indexs_stops = sorted(indexs_stops)
+   
+
+### a new list  
+indexs_stops = []
+    for i in lis: ### all the stop codons 
+        indexs_stops.append(int(Orf1.index(i)))### add the indexes of all the stop codons in a list
+    sorted_indexs_stops = sorted(indexs_stops)### sort the list of these indexes
+    
+    ####create a new list 
     start = (Orf1.index("ATG")) #start index
     #print(start)
-    if len(sorted_indexs_stops) >= 1:
-        stop = sorted_indexs_stops[0]#stop index
-        return ("".join(Orf1[start:stop]))
+    if len(sorted_indexs_stops) >= 1:## identify if there are any stop codons
+        stop = sorted_indexs_stops[0]#pick the first one 
+        return ("".join(Orf1[start:stop])) ### return from the first position to the last 
        
     else:
-        return ("".join(Orf1[start:]))
+        return ("".join(Orf1[start:])) ### the full string from the first start codon to the last nucleotide if there is no stop codon 
 
  
 
